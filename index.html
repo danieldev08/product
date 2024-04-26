@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product</title>
-
-
-    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"rel="stylesheet">
-    />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/media.css">
 </head>
 <body>
 
@@ -34,6 +35,27 @@
                 <button class="btn-three">
                     <ion-icon name="contrast"></ion-icon>
                 </button>
+            </div>
+            <div class="burger-menu">
+                <input type="checkbox" id="menu-toggle"/>
+                <label id="menu-button" class="menu-button" for="menu-toggle">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </label>
+                <div id="site-menu">
+                    <ul id="site-menu-titles">
+                        <li><p><a href="#">Home</a></p></li>
+                        <li><p><a href="">Costumers</a></p></li>
+                        <li><p><a href="">Pricing</a></p></li>
+                        <li><p><a href="">Resources</a></p></li>
+                        <li>
+                            <button class="btn-one">Sing In</button>
+                            <button class="btn-two">Sing Up</button>
+                            <button class="btn-three"></button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -124,13 +146,13 @@
 <section id="text-section">
     <div class="container">
         <div class="text-section">
-            <img src="./img/section-icon.png" alt="img">
+            <img src="./img/section-icon.png" alt="img" class="img-2">
             <div class="text-section-group">
                 <h4>Easier decision making for</h4>
                 <h1>Customer Support</h1>
-                <h6>The Myspace page defines the individual, his or her
+                <h5>The Myspace page defines the individual, his or her
                     <br>characteristics, traits, personal choices and the overall <br>
-                    personality of the person. </h6>
+                    personality of the person. </h5>
                 <div class="text-section-icon">
                     <img src="./img/icon10.svg" alt="img">
                     <h6>Never worry about overpaying for your
@@ -173,7 +195,7 @@
                         business that won’t cost you more money, </h6>
                 </div>
             </div>
-            <img src="./img/text-section-icon-two.png" alt="img">
+            <img src="./img/text-section-icon-two.png" alt="img" class="img-3">
         </div>
     </div>
 </section>
@@ -478,5 +500,6 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./js/script.js"></script>
+
 </body>
-</html> 
+</html>

@@ -24,7 +24,11 @@ body {
 }
 
 #header {
-    padding: 25px 0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+    padding: 20px 0;
 }
 
 .header-logo {
@@ -99,6 +103,170 @@ body {
     color: #02897a;
     font-size: 22px;
 }
+.burger-menu {
+    display: none;
+}
+
+#site-menu li, #site-menu p {
+    padding: 10px;
+    margin: 0;
+    color: #000000;
+    text-decoration: none;
+    text-transform: none;
+    list-style: none;
+    display: none;
+    text-align: center;
+    transition: all .5s;
+    /* Credit to Mike for the responsive font-sizing https://www.madebymike.com.au/writing/fluid-type-calc-examples/ */
+    font-size: calc(20px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
+}
+
+#site-menu p:hover {
+    display: block;
+    color: #5bc1e8;
+    transition: all .5s;
+    font-weight:bold;
+}
+
+/* hides toggle handler */
+[type="checkbox"]:checked, [type="checkbox"]:not(:checked) {
+    display: none;
+}
+
+/* menu button & animation */
+.menu-button {
+    position: absolute;
+    right:0px;
+    top:13px;
+    z-index: 100;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.line {
+    position: relative;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: black;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.line:nth-child(1) {
+    top: 35%;
+}
+
+.line:nth-child(2) {
+    top: 45%;
+}
+
+.line:nth-child(3) {
+    top: 55%;
+}
+
+/* animate background of lines */
+.menu-button:hover .line::after {
+    transform: translateX(0);
+}
+
+.menu-button .line::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    /*background: rgba(255, 255, 255,1);*/
+    transform: translateX(100%);
+    transition: all 0.25s ease;
+}
+
+#menu-toggle:checked + .menu-button .line::after {
+    background: rgba(91, 193, 232,1);
+}
+
+#menu-toggle:checked + .menu-button  {
+    transform: rotate(180deg);
+    transition: transform .2s ease;
+}
+
+#menu-toggle:checked + #menu-button .line:nth-child(1){
+    transform: translateY(5px) rotate(45deg);/*45deg*/
+}
+
+
+#menu-toggle:checked + #menu-button .line:nth-child(2) {
+    transform: scaleX(0);
+    opacity:0;
+}
+
+#menu-toggle:checked + #menu-button .line:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);/* -45deg*/
+}
+
+
+/* animate menu in */
+#menu-toggle:checked + #menu-button + #site-menu{
+    animation: menu-open 2s ease both;
+
+}
+
+#menu-toggle:checked + #menu-button + #site-menu ul > li, #site-menu p {
+    display: block;
+    animation: menu-txt-open 2.5s ease both;
+}
+
+#site-menu {
+    position: absolute;
+    width: 0px;
+    height: 100vh;
+    right:0px;
+    top:0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    animation: menu-closed .3s both;
+
+    transition: .2s;
+}
+
+#site-menu-titles{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+@keyframes menu-open {
+    100% {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+@keyframes menu-closed {
+    0% {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+@keyframes menu-txt-open {
+    0%, 70% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
 
 #hero {
     padding: 50px 0;
@@ -171,7 +339,7 @@ body {
 .product h1 {
     color: #22343D;
     width: 539px;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding-bottom: 66px;
     font-size: 32px;
     font-weight: 700;
@@ -250,7 +418,8 @@ body {
     align-items: center;
 }
 
-.product-icon-three { display: flex;
+.product-icon-three {
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -287,7 +456,7 @@ body {
 }
 
 .product-two-text p {
-line-height: 25px;
+    line-height: 25px;
 }
 
 .product-two-text h1 {
@@ -299,7 +468,7 @@ line-height: 25px;
 }
 
 #text-section {
-    padding: 50px 0  ;
+    padding: 50px 0;
 }
 
 .text-section {
@@ -322,6 +491,15 @@ line-height: 25px;
 }
 
 .text-section-group h6 {
+    width: 486px;
+    color: #22343D;
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 30px;
+    line-height: 26px;
+}
+
+.text-section-group h5 {
     width: 486px;
     color: #22343D;
     font-size: 16px;
@@ -354,7 +532,7 @@ line-height: 25px;
     font-weight: 600;
     line-height: 24px;
     color: #22343D;
-    margin: 25px 0 0 0 ;
+    margin: 25px 0 0 0;
 }
 
 .text-section-two h1 {
@@ -367,7 +545,7 @@ line-height: 25px;
     width: 586px;
     font-size: 16px;
     font-weight: 400;
-    line-height:26px;
+    line-height: 26px;
     padding-bottom: 15px;
 }
 
@@ -398,10 +576,10 @@ line-height: 25px;
 }
 
 .process h6 {
-    padding: 16px 0 0 46px;
+    padding: 16px 0 46px 0;
     width: 546px;
     margin: 0 auto;
-    font-size:16px;
+    font-size: 16px;
     color: #22343D;
     font-weight: 500;
     line-height: 26px;
@@ -428,7 +606,8 @@ line-height: 25px;
     margin: 0 16px;
     border-radius: 25px;
     box-shadow: 0 0 3px #bcd0e5;
-    display: flex;justify-content: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 16px;
     font-weight: 500;
@@ -438,8 +617,8 @@ line-height: 25px;
     color: white;
     font-size: 16px;
     font-weight: 700;
-    border:  2px solid #02897a;
-    padding:  15px 30px;
+    border: 2px solid #02897a;
+    padding: 15px 30px;
     display: flex;
     justify-content: center;
     border-radius: 6px;
@@ -467,10 +646,11 @@ line-height: 25px;
 
 .contents-block {
     width: 348px;
-    transition:.4s;
+    transition: .4s;
     height: 359px;
     border: 2px solid #dedede;
 }
+
 .contents-block:hover > h6 {
     color: #02897a;
 }
@@ -554,28 +734,28 @@ line-height: 25px;
     background: #02897a;
 }
 
-.price-block:hover >h2 {
+.price-block:hover > h2 {
     color: white;
 }
 
-.price-block:hover >h6 {
+.price-block:hover > h6 {
     color: white;
 }
 
-.price-block:hover >button {
+.price-block:hover > button {
     color: #02897a;
     background: white;
 }
 
-.price-block:hover >h5 {
+.price-block:hover > h5 {
     color: white;
 }
 
-.price-block:hover .price-title >h3 {
+.price-block:hover .price-title > h3 {
     color: white;
 }
 
-.price-block:hover .price-title-text >h4 {
+.price-block:hover .price-title-text > h4 {
     color: white;
 }
 
@@ -618,7 +798,7 @@ line-height: 25px;
     font-weight: 400;
 }
 
-.price-block  h5 {
+.price-block h5 {
     color: #22343D;
     padding-bottom: 16px;
     font-size: 16px;
@@ -649,7 +829,7 @@ line-height: 25px;
     font-size: 16px;
     color: #22343D;
     margin: 0 auto;
-    padding: 8px 0 50px 0 ;
+    padding: 8px 0 50px 0;
     width: 537px;
     font-weight: 500;
     line-height: 28px;
@@ -665,7 +845,7 @@ line-height: 25px;
 .clients-block {
     width: 307px;
     height: 217px;
-    padding:  28px 0 0 28px;
+    padding: 28px 0 0 28px;
     border-radius: 5px;
     border: 1px solid #dedede;
 }
@@ -698,7 +878,7 @@ line-height: 25px;
     padding-left: 14px;
 }
 
-.clients-text  h3 {
+.clients-text h3 {
     color: #02897a;
     padding-bottom: 4px;
     font-size: 16px;
@@ -713,7 +893,7 @@ line-height: 25px;
 }
 
 #join {
-    padding: 100px 0 ;
+    padding: 100px 0;
 }
 
 .join {
@@ -796,7 +976,7 @@ line-height: 25px;
     padding-bottom: 10px;
 }
 
-.res a , .legal  a{
+.res a, .legal a {
     color: #22343D;
     font-size: 16px;
     font-weight: 400;
@@ -804,7 +984,7 @@ line-height: 25px;
     padding-bottom: 10px;
 }
 
-.search p  {
+.search p {
     color: #22343D;
     width: 280px;
     font-size: 20px;
