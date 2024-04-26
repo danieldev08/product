@@ -1,6 +1,6 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -31,6 +31,18 @@ body {
     padding: 20px 0;
 }
 
+/*.header-logo {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.header-logo h1 {*/
+/*    padding-left: 16px;*/
+/*    color: #173a56;*/
+/*    font-size: 30px;*/
+/*    font-weight: 700;*/
+/*}*/
+
 .header-logo {
     display: flex;
     align-items: center;
@@ -38,7 +50,7 @@ body {
 
 .header-logo h1 {
     padding-left: 16px;
-    color: #173a56;
+    color: #173A56;
     font-size: 30px;
     font-weight: 700;
 }
@@ -137,7 +149,7 @@ body {
 .menu-button {
     position: absolute;
     right:0px;
-    top:13px;
+    top:15px;
     z-index: 100;
     display: block;
     width: 50px;
